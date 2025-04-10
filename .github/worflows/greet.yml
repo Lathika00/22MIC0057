@@ -1,0 +1,30 @@
+
+name: Student Greet Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: 'Enter your name'
+        required: true
+        default: 'Student'
+      registration_number:
+        description: 'Enter your registration number'
+        required: true
+        default: '22MIC0000'
+      exam:
+        description: 'Enter your exam name'
+        required: true
+        default: 'Final Exam'
+
+jobs:
+  greet_student:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display student exam greeting
+        run: |
+          echo "Hello, ${{ github.event.inputs.username }} 👋"
+          echo "Registration Number: ${{ github.event.inputs.registration_number }}"
+          echo "Exam: ${{ github.event.inputs.exam }}"
+          echo "✅ All the best for your exam!"
